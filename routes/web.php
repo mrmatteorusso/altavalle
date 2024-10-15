@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[ EventController::class, 'index']);
