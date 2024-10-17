@@ -16,16 +16,16 @@
         </h2>
         <p class="text-sm text-gray-600">{{$event->short_description}}</p>
         <div class="mt-4">
-            <p><strong>Date:</strong> {{$event->event_date}}</p>
+            <p><strong>Date:</strong> {{\Carbon\Carbon::parse($event->event_date)->format('D, d M')}}</p>
             <p><strong>Time:</strong> {{ $event->starting_time }} AM - {{ $event->finishing_time }} PM</p>
             <p><strong>Location:</strong>{{$event->location}}</p>
-            <div class="inline-block border border-gray-400 text-gray-700 px-2 py-0.5 mt-1 rounded-md text-white">
+            <div class="inline-block border border-gray-400  px-2 py-0.5 mt-1 rounded-md text-white">
                 {{$event->area}}
             </div>
 
         </div>
         <div class="mt-4 flex justify-end">
-            <button class="btn btn-primary">Learn more</button>
+            <a href="/events/show/{{$event->id}}" class="btn btn-primary">Learn more</a>
         </div>
     </div>
 </div>
