@@ -30,15 +30,15 @@
                     src="https://via.placeholder.com/640x480.png/0066cc?text=delectus" alt="Event" />
             </figure>
 
-            <p class="text-sm text-gray-800">{{ $event->long_description }}</p>
+            <p class="text-sm text-gray-800">{!! $event->long_description !!}</p>
 
             <div class="mt-4 flex justify-between w-72 mx-auto">
-                <a href="/" class="btn btn-primary bg-blue-600 text-white">Edit</a>
+                <a href="/events/{{$event->id}}/edit" class="btn btn-primary bg-blue-600 text-white">Edit</a>
                 <a href="/" class="btn btn-primary bg-gray-300 text-black">Back</a>
                 <form action="/events/{{ $event->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button href="/events/{{ $event->id }}"
+                    <button
                         class="btn btn-primary bg-red-600 text-white">Delete</button>
                 </form>
             </div>
