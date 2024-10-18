@@ -67,7 +67,8 @@
                     <label for="long_description" class="label">
                         <span class="label-text">Event Description</span>
                     </label>
-                    <textarea id="long_description" name="long_description" class="textarea textarea-bordered w-full">
+                    {{-- <textarea id="long_description" name="long_description" class="textarea textarea-bordered w-full"> --}}
+                    <textarea id="test" name="long_description" class="textarea textarea-bordered w-full">
         </textarea>
                 </div>
 
