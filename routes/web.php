@@ -9,7 +9,8 @@ Route::get('/passes', function () {return view('passes');});
 Route::get('/lifts', function () {return view('lifts');});
 Route::get('/meteo', function () {return view('meteo');});
 
-Route::get('/',[ EventController::class, 'index']);
+Route::get('/',[ EventController::class, 'home']);
+Route::get('/events/index',[ EventController::class, 'index']);
 Route::get('/events/create',[ EventController::class, 'create']);
 Route::post('/events',[ EventController::class, 'store']);
 

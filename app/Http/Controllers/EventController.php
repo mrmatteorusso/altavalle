@@ -8,18 +8,17 @@ use Carbon\Carbon;
 
 class EventController extends Controller
 {
+
+    public function home(){
+        $events = Event::latest()->get();
+
+        return view('home', ['events' => $events]);
+    }
     public function index()
     {
-        $month = Carbon::now()->month;
-
-        if ($month >= 10 || $month <= 4) {
-            $season = 'Winter';
-        } else {
-            $season = 'Summer';
-        }
 
         $events = Event::latest()->get();
-        return view('index', ['events' => $events, 'season' => $season]);
+        return view('events.index', ['events' => $events]);
     }
 
     public function create()
@@ -48,7 +47,7 @@ class EventController extends Controller
                 'area' => $request->area,
             ]
         );
-        return redirect('/');
+        return redirect('/events/index');
     }
 
     public function showByArea($area)
@@ -57,9 +56,9 @@ class EventController extends Controller
         $filteredEvents = Event::where('area', $area)->get();
         if (count($filteredEvents) > 0) {
 
-            return view('index', ['events' => $events,'filteredEvents' => $filteredEvents]);
+            return view('events.index', ['events' => $events,'filteredEvents' => $filteredEvents]);
         } else {
-            return view('index', ['events' => $events, 'area' => $area]);
+            return view('events.index', ['events' => $events, 'area' => $area]);
         };
     }
 

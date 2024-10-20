@@ -9,7 +9,7 @@
             {{ $slot }}
         </div>
         <div class="flex justify-center mt-4">
-            <button class="btn btn-primary">More Info</button>
+            <x-button-call-to-action>More Info</x-button-call-to-action>
         </div>
     </div>
 </div>
