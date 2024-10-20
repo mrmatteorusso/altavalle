@@ -10,10 +10,14 @@ let summerButton = document.getElementById('summerButton')
 let winterButton = document.getElementById('winterButton')
 
 
-if (currentMonth > 8) {
+if (currentMonth > 8 || currentMonth < 4) { //winter
     winterCarousel.classList.remove("hidden");
     summerCarousel.classList.add('hidden');
     winterButton.classList.add('bg-gray-500')
+} else {
+    summerCarousel.classList.remove('hidden');
+    winterCarousel.classList.add("hidden");
+    summerButton.classList.add('bg-gray-500')
 }
 
 
