@@ -17,3 +17,7 @@ Route::get('/events/show/{id}',[ EventController::class, 'show']);
 Route::get('/events/{event}/edit',[ EventController::class, 'edit']);
 Route::patch('/events/{event}',[ EventController::class, 'update']);
 Route::delete('/events/{event}',[ EventController::class, 'destroy']);
+
+
+Route::get('/{area}', [EventController::class, 'showByArea']);
+// Route::get('/{season}', [EventController::class, 'showBySeason']);

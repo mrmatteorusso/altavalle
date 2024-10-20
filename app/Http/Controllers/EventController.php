@@ -4,13 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
     public function index()
     {
+        $month = Carbon::now()->month;
+
+        if ($month >= 10 || $month <= 4) {
+            $season = 'Winter';
+        } else {
+            $season = 'Summer';
+        }
+
         $events = Event::latest()->get();
-        return view('index', ['events' => $events]);
+        return view('index', ['events' => $events, 'season' => $season]);
     }
 
     public function create()
@@ -41,6 +50,20 @@ class EventController extends Controller
         );
         return redirect('/');
     }
+
+    public function showByArea($area)
+    {
+        $events = Event::all();
+        $filteredEvents = Event::where('area', $area)->get();
+        if (count($filteredEvents) > 0) {
+
+            return view('index', ['events' => $events,'filteredEvents' => $filteredEvents]);
+        } else {
+            return view('index', ['events' => $events, 'area' => $area]);
+        };
+    }
+
+
 
     public function show($id)
     {
